@@ -39,7 +39,7 @@ public class Person extends Animal implements Marriageable {
 
     public void marriage(Person spouse, String familyname) throws AlreadyMarriedException {
         if (this.spouse != null) {
-            throw new AlreadyMarriedException(String.format("Already married with %s %s", this.spouse.firstname, this.spouse.lastname));
+            throw new AlreadyMarriedException(String.format("Already married with %s %s", this.spouse.getFirstname(), this.spouse.getLastname()));
         }
         setLastname(familyname);
         this.spouse = spouse;
