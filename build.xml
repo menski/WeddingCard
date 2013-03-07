@@ -1,0 +1,39 @@
+<project name="WeddingCard" default="dist" basedir=".">
+    <description>
+        Wedding Card Build File
+    </description>
+  <property name="src" location="src"/>
+  <property name="build" location="build"/>
+  <property name="dist"  location="dist"/>
+
+  <target name="init">
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="compile" depends="init"
+        description="compile the source " >
+    <javac srcdir="${src}" destdir="${build}"/>
+  </target>
+
+  <target name="dist" depends="compile"
+        description="generate the distribution" >
+    <mkdir dir="${dist}"/>
+
+    <jar jarfile="${dist}/WeddingCard.jar" basedir="${build}">
+      <manifest>
+        <attribute name="Main-Class" value="WeddingCard"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="clean"
+        description="clean up" >
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+
+  <target name="run">
+    <java jar="${dist}/WeddingCard.jar" fork="true"/>
+  </target>
+
+</project>
